@@ -1,0 +1,15 @@
+ALTER TABLE Account ADD COLUMN id int not null auto_increment primary key;
+ALTER TABLE Account DROP number;
+DESCRIBE Account;
+
+ALTER TABLE Addressbook ADD COLUMN id int not null auto_increment primary key;
+ALTER TABLE Addressbook DROP number;   
+DESCRIBE Addressbook;
+
+ALTER TABLE Entry ADD COLUMN id int not null auto_increment primary key;
+ALTER TABLE Entry DROP COLUMN number;
+DESCRIBE Entry;
+
+ALTER TABLE Entry ADD COLUMN type ENUM('home', 'work', 'other');
+ALTER TABLE Entry ADD COLUMN subtype ENUM('phone', 'address', 'email');
+DESCRIBE Entry;
