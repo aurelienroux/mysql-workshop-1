@@ -1,0 +1,44 @@
+CREATE TABLE Barn (id int not null auto_increment primary key);
+ALTER TABLE Barn ADD COLUMN Type ENUM('rooster', 'hen', 'chicks');
+ALTER TABLE Barn ADD COLUMN date_of_birth date;
+
+mysql> describe Barn;
++---------------+--------------------------------+------+-----+---------+----------------+
+| Field         | Type                           | Null | Key | Default | Extra          |
++---------------+--------------------------------+------+-----+---------+----------------+
+| id            | int(11)                        | NO   | PRI | NULL    | auto_increment |
+| Type          | enum('rooster','hen','chicks') | YES  |     | NULL    |                |
+| date_of_birth | date                           | YES  |     | NULL    |                |
++---------------+--------------------------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+INSERT INTO Barn (id, Type, date_of_birth) VALUES (null, 'rooster', '2015-10-01');   
+INSERT INTO Barn VALUES (null, 'rooster', '2016-04-02');
+INSERT INTO Barn VALUES (null, 'hen', '2014-05-20' );  
+INSERT INTO Barn VALUES (null, 'rooster', '2013-03-20' );  
+
+mysql> select * from Barn;
++----+---------+---------------+
+| id | Type    | date_of_birth |
++----+---------+---------------+
+|  2 | rooster | 2015-10-01    |
+|  3 | rooster | 2016-04-02    |
+|  4 | chicks  | 2016-11-09    |
+|  5 | chicks  | 2016-10-14    |
+|  6 | hen     | 2014-05-20    |
+|  7 | rooster | 2013-03-20    |
++----+---------+---------------+
+6 rows in set (0.00 sec)
+
+
+***How many rooster, hen and chicks existed in the Barn on a specific date
+mysql> SELECT * FROM Barn WHERE date_of_birth < '2016-10-14';
++----+---------+---------------+
+| id | Type    | date_of_birth |
++----+---------+---------------+
+|  2 | rooster | 2015-10-01    |
+|  3 | rooster | 2016-04-02    |
+|  6 | hen     | 2014-05-20    |
+|  7 | rooster | 2013-03-20    |
++----+---------+---------------+
+4 rows in set (0.00 sec)

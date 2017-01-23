@@ -12,4 +12,12 @@ DESCRIBE Entry;
 
 ALTER TABLE Entry ADD COLUMN type ENUM('home', 'work', 'other');
 ALTER TABLE Entry ADD COLUMN subtype ENUM('phone', 'address', 'email');
-DESCRIBE Entry;
+
+mysql> describe Entry;
++---------+---------------------------------+------+-----+---------+----------------+
+| Field   | Type                            | Null | Key | Default | Extra          |
++---------+---------------------------------+------+-----+---------+----------------+
+| id      | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| type    | enum('home','work','other')     | YES  |     | NULL    |                |
+| subtype | enum('phone','address','email') | YES  |     | NULL    |                |
++---------+---------------------------------+------+-----+---------+----------------+
